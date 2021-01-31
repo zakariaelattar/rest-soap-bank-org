@@ -109,18 +109,22 @@
 					<schemaLanguage>WSDL</schemaLanguage>
 					<generatePackage>com.cmi.providedws.wsdl</generatePackage>
 					<schemas>
+					<!--	<schema>
+							<url>http://localhost:8086/service/getFormWsdl.wsdl</url>
+						</schema>-->
 						<schema>
 							<url>http://localhost:8083/service/createAccountValidationWsdl.wsdl</url>
 						</schema>
+
 						<schema>
 							<url>http://localhost:8084/service/checkBalanceWsdl.wsdl</url>
 						</schema>
+
 						<schema>
 							<url>http://localhost:8085/service/creditorsListWsdl.wsdl</url>
 						</schema>
-						<schema>
-							<url>http://localhost:8086/service/getFormWsdl.wsdl</url>
-						</schema>
+
+
 						<schema>
 							<url>http://localhost:8089/service/paymentWsdl.wsdl</url>
 						</schema>

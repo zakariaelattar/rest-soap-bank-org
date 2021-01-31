@@ -30,17 +30,9 @@ public class BankApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		//checkBalanceClient.checkBalance(123456789);
-		/*Client client = new Client();
 
-		client.setCin("ee123456");
-		client.setFirst_name("zakaria");
-		client.setLast_name("el attar");
 
-		createAccountClient.createAccount(client,1);*/
 
-		//paymentClient.pay(123456789,1,20);
 
-		creditorClient.getCreditors();
 	}
 }

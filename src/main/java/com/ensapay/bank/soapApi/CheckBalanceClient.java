@@ -10,7 +10,7 @@ import org.springframework.ws.soap.client.core.SoapActionCallback;
 public class CheckBalanceClient extends WebServiceGatewaySupport {
     private static final Logger log = LoggerFactory.getLogger(CheckBalanceClient.class);
 
-    public CheckBalanceResponse checkBalance(long account_number) {
+    public CheckBalanceResponse checkBalance(String account_number) {
     CheckBalanceRequest checkBalanceRequest = new CheckBalanceRequest();
     checkBalanceRequest.setAccountNumber(account_number);
 

@@ -20,6 +20,5 @@ public class Creditor {
     private long id;
     private String name;
 
-    @OneToOne
-    private Invoice invoice;
+
 }

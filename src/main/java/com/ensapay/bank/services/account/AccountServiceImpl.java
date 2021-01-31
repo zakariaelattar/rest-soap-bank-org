@@ -1,46 +1,63 @@
 package com.ensapay.bank.services.account;
 
 
+import com.ensapay.bank.entities.Client;
 import com.ensapay.bank.entities.Account;
 import com.ensapay.bank.repositories.AccountRepository;
+import com.ensapay.bank.repositories.ClientRepository;
+import com.ensapay.bank.repositories.ProductRepository;
+import com.ensapay.bank.soapApi.CheckBalanceClient;
+import com.ensapay.bank.soapApi.CreateAccountClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class AccountServiceImpl implements AccountService {
 
+    @Autowired
+    CheckBalanceClient checkBalanceClient;
+    @Autowired
+    CreateAccountClient createAccountClient;
 
     @Autowired
     AccountRepository accountRepository;
+    @Autowired
+    ProductRepository productRepository;
+
+    @Autowired
+    ClientRepository clientRepository;
     @Override
-    public Account openAccount(Account account) {
+    public String openAccount(long client_id,long product_id) {
+
+        Client client = clientRepository.findFirstById(client_id);
 
         try {
+            // calling here the soap service cmi
+            String cmi_response = createAccountClient.createAccount(client,1).isResponse();
 
-            if(requestAccountCreationValidationCMI(account)) {
-                accountRepository.save(account);
+            if(cmi_response != "9999999") {
+
+                    Account account = new Account();
+                    account.setAccountNumber(cmi_response);
+                    account.setProduct(productRepository.findFirstById(product_id));
+                    accountRepository.save(account);
+
             }
+                    return cmi_response;
 
-            return account;
         }
 
         catch(Exception e) {
-        return null;
+        return "expt";
 
         }
     }
 
     @Override
-    public boolean requestAccountCreationValidationCMI(Account account) {
-        /**
-         * SEND AN XML MESSAGE TO WEB SERVICE CMI VALIDATION
-         */
+    public double checkBalance(String account_number) {
 
-        return false;
-    }
+        // calling here the soap service cmi
+        return checkBalanceClient.checkBalance(account_number).getAmount();
 
-    @Override
-    public double checkBalance(long account_number) {
-        return 0;
     }
 }

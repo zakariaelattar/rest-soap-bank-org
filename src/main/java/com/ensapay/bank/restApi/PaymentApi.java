@@ -11,18 +11,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-public class PaymentController {
+@RequestMapping(value = "/api/payment")
+
+public class PaymentApi {
 
 
     @Autowired
     PaymentService paymentService;
-    Logger logger = LoggerFactory.getLogger(PaymentController.class);
+    Logger logger = LoggerFactory.getLogger(PaymentApi.class);
 
     @RequestMapping(value = "pay" , method = RequestMethod.POST)
-    public int pay(@RequestBody long account_number, @RequestBody long creditor_code, @RequestBody long amount) {
+    public double pay(@RequestBody long account_number, @RequestBody long creditor_code, @RequestBody long amount) {
         logger.info("trying to paying the amount: "+amount+", to creditor: "+creditor_code+"from account: "+account_number);
-        paymentService.pay(account_number,creditor_code,amount);
-        return 55;
+        return paymentService.pay(account_number,creditor_code,amount);
 
     }
 

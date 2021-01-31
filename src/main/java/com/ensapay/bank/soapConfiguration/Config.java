@@ -1,10 +1,7 @@
 package com.ensapay.bank.soapConfiguration;
 
 
-import com.ensapay.bank.soapApi.CheckBalanceClient;
-import com.ensapay.bank.soapApi.CreateAccountClient;
-import com.ensapay.bank.soapApi.CreditorClient;
-import com.ensapay.bank.soapApi.PaymentClient;
+import com.ensapay.bank.soapApi.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
@@ -52,6 +49,15 @@ public class Config {
         client.setUnmarshaller(marshaller);
         client.setDefaultUri("http://localhost:8090/service");
         return client;
+    }
+
+        @Bean
+        public GetFormClient getFormClient(Jaxb2Marshaller marshaller) {
+            GetFormClient client = new GetFormClient();
+            client.setMarshaller(marshaller);
+            client.setUnmarshaller(marshaller);
+            client.setDefaultUri("http://localhost:8090/service");
+            return client;
     }
 
 }
