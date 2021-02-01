@@ -18,7 +18,7 @@ public class FormApi {
 
     @Autowired
     GetFormService getFormService;
-    @RequestMapping(value = "" , method = RequestMethod.POST)
+    @RequestMapping(value = "/" , method = RequestMethod.POST)
     public List<String> getForm(@RequestBody  String creditor_code, @RequestBody long categorie_id) {
 
         return getFormService.getForm(creditor_code,categorie_id);
