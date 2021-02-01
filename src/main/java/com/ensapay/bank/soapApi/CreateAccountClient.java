@@ -11,22 +11,19 @@ import org.springframework.ws.soap.client.core.SoapActionCallback;
 public class CreateAccountClient extends WebServiceGatewaySupport {
     private static final Logger log = LoggerFactory.getLogger(CreateAccountClient.class);
 
-    public CreateAccountValidationResponse createAccount(Client client, long bank_id) {
+    public CreateAccountValidationResponse createAccount(String cin, long bank_id) {
+        log.info("starting process of createAccountClient");
         CreateAccountValidationRequest createAccountValidationRequest = new CreateAccountValidationRequest();
         createAccountValidationRequest.setBankId(bank_id);
-        com.cmi.providedws.wsdl.Client client1 = new com.cmi.providedws.wsdl.Client();
-        client1.setCin(client.getCin());
-        client1.setFirstName(client.getFirst_name());
-        client1.setLastName(client.getLast_name());
 
-        createAccountValidationRequest.setClient(client1);
+        createAccountValidationRequest.setCin(cin);
 
 
-        log.info("Requesting the cmi web service creation  account for client cin:"+client.getCin());
+        log.info("Requesting the cmi web service creation  account for client cin:"+cin);
 
         CreateAccountValidationResponse createAccountValidationResponse = (CreateAccountValidationResponse) getWebServiceTemplate()
                 .marshalSendAndReceive("http://localhost:8083/service/createAccount",createAccountValidationRequest,new SoapActionCallback(""));
-        log.info("received response from the cmi web service create payment account validation:"+createAccountValidationRequest+":"+createAccountValidationResponse.isResponse());
+        log.info("received response from the cmi web service create payment account validation: "+createAccountValidationResponse.getResponse());
 
 
 

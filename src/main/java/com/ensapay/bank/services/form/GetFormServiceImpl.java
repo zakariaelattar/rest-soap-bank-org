@@ -2,7 +2,6 @@ package com.ensapay.bank.services.form;
 
 
 import com.ensapay.bank.soapApi.GetFormClient;
-import com.sun.org.apache.xpath.internal.operations.String;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,4 +22,6 @@ public class GetFormServiceImpl implements GetFormService {
 
         return new ArrayList<>();
     }
+
+
 }

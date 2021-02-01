@@ -20,5 +20,4 @@ public class Creditor {
     private long id;
     private String name;
 
-
 }

@@ -2,6 +2,9 @@ package com.ensapay.bank.restApi;
 
 
 import com.ensapay.bank.entities.Account;
+import com.ensapay.bank.entities.Client;
+import com.ensapay.bank.entities.CreateAccountRequest;
+import com.ensapay.bank.repositories.ClientRepository;
 import com.ensapay.bank.services.account.AccountService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,18 +17,17 @@ public class AccountApi {
 
     @Autowired
     AccountService accountService;
-
+    @Autowired
+    ClientRepository clientRepository;
     Logger logger = LoggerFactory.getLogger(AccountApi.class);
 
-    /**
-     *  Enable disable an account
-     * */
 
-    @RequestMapping(value = "" , method = RequestMethod.POST)
-    public String openAccount(@RequestBody long client_id, @RequestBody long product_id) {
+
+    @RequestMapping(value = "new",method = RequestMethod.POST)
+    public String openAccount(@RequestBody CreateAccountRequest createAccountRequest) {
         logger.info("trying to open a new account :...");
         try {
-            return accountService.openAccount(client_id,product_id);
+            return accountService.openAccount(createAccountRequest.getClient_cin(),createAccountRequest.getProduct_id());
 
         }
         catch(Exception e)

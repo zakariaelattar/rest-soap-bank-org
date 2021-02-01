@@ -6,8 +6,11 @@ import com.ensapay.bank.entities.Account;
 import com.ensapay.bank.repositories.AccountRepository;
 import com.ensapay.bank.repositories.ClientRepository;
 import com.ensapay.bank.repositories.ProductRepository;
+import com.ensapay.bank.services.mail.MailServiceImpl;
 import com.ensapay.bank.soapApi.CheckBalanceClient;
 import com.ensapay.bank.soapApi.CreateAccountClient;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,14 +30,16 @@ public class AccountServiceImpl implements AccountService {
     @Autowired
     ClientRepository clientRepository;
     @Override
-    public String openAccount(long client_id,long product_id) {
+    public String openAccount(String cin,long product_id) {
 
-        Client client = clientRepository.findFirstById(client_id);
+            Logger logger = LoggerFactory.getLogger(AccountServiceImpl.class);
 
+            logger.info("trying requesting cmi:");
         try {
             // calling here the soap service cmi
-            String cmi_response = createAccountClient.createAccount(client,1).isResponse();
 
+            String cmi_response = createAccountClient.createAccount(cin,1).getResponse();
+            logger.info("cmi responded bu:"+cmi_response);
             if(cmi_response != "9999999") {
 
                     Account account = new Account();

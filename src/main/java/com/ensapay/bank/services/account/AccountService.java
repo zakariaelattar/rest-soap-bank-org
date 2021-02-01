@@ -5,6 +5,6 @@ import com.ensapay.bank.entities.Account;
 
 public interface AccountService {
 
-    public abstract String openAccount(long client_id,long product_id);
+    public abstract String openAccount(String cin,long product_id);
     public abstract double checkBalance(String account_number);
 }

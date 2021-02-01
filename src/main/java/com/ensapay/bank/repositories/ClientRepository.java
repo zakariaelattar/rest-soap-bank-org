@@ -7,5 +7,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 @RepositoryRestResource
 public interface ClientRepository extends JpaRepository<Client,Long> {
-    Client findFirstById(long client_id);
+    public abstract Client findFirstById(long client_id);
+   public abstract Client findFirstByCin(String cin);
 }
