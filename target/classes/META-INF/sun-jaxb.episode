@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<bindings xmlns="http://java.sun.com/xml/ns/jaxb" if-exists="true" version="2.1">
+      
+    <!--
+
+Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.3.0 
+Voir <a href="https://javaee.github.io/jaxb-v2/">https://javaee.github.io/jaxb-v2/</a> 
+Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
+Généré le : 2021.01.31 à 03:34:06 PM GMT 
+
+  -->
+      
+    <bindings xmlns:tns="http://www.cmi.com/xml/account" if-exists="true" scd="x-schema::tns">
+            
+        <schemaBindings map="false">
+                  
+            <package name="com.cmi.providedws.wsdl"/>
+                
+        </schemaBindings>
+            
+        <bindings if-exists="true" scd="tns:createAccountValidationRequest">
+                  
+            <class ref="com.cmi.providedws.wsdl.CreateAccountValidationRequest"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:createAccountValidationResponse">
+                  
+            <class ref="com.cmi.providedws.wsdl.CreateAccountValidationResponse"/>
+                
+        </bindings>
+          
+    </bindings>
+      
+    <bindings xmlns:tns="http://www.cmi.com/xml/balance" if-exists="true" scd="x-schema::tns">
+            
+        <schemaBindings map="false">
+                  
+            <package name="com.cmi.providedws.wsdl"/>
+                
+        </schemaBindings>
+            
+        <bindings if-exists="true" scd="tns:checkBalanceRequest">
+                  
+            <class ref="com.cmi.providedws.wsdl.CheckBalanceRequest"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:checkBalanceResponse">
+                  
+            <class ref="com.cmi.providedws.wsdl.CheckBalanceResponse"/>
+                
+        </bindings>
+          
+    </bindings>
+      
+    <bindings xmlns:tns="http://www.cmi.com/xml/creditors" if-exists="true" scd="x-schema::tns">
+            
+        <schemaBindings map="false">
+                  
+            <package name="com.cmi.providedws.wsdl"/>
+                
+        </schemaBindings>
+            
+        <bindings if-exists="true" scd="tns:getCreditorsRequest">
+                  
+            <class ref="com.cmi.providedws.wsdl.GetCreditorsRequest"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:getCreditorsResponse">
+                  
+            <class ref="com.cmi.providedws.wsdl.GetCreditorsResponse"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:creditor">
+                  
+            <class ref="com.cmi.providedws.wsdl.Creditor"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:categorie">
+                  
+            <class ref="com.cmi.providedws.wsdl.Categorie"/>
+                
+        </bindings>
+          
+    </bindings>
+      
+    <bindings xmlns:tns="http://www.cmi.com/xml/payment" if-exists="true" scd="x-schema::tns">
+            
+        <schemaBindings map="false">
+                  
+            <package name="com.cmi.providedws.wsdl"/>
+                
+        </schemaBindings>
+            
+        <bindings if-exists="true" scd="tns:paymentRequest">
+                  
+            <class ref="com.cmi.providedws.wsdl.PaymentRequest"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:paymentResponse">
+                  
+            <class ref="com.cmi.providedws.wsdl.PaymentResponse"/>
+                
+        </bindings>
+          
+    </bindings>
+    
+</bindings>
