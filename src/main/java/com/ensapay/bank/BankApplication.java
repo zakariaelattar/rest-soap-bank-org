@@ -103,19 +103,30 @@ public class BankApplication implements CommandLineRunner {
 		clientRepository.save(client4);
 
 
-		User user = new User();
-		Set<Role> roles = new HashSet<Role>();
+		User user1 = new User();
+		Set<Role> roles1 = new HashSet<Role>();
 
-		roles.add(role1);
+		roles1.add(role1);
+		User user2 = new User();
+		Set<Role> roles2 = new HashSet<Role>();
+
+		roles2.add(role3);
 
 
 
-		user.setEmail("elattarz@yahoo.com");
-		user.setUsername("zakimaro");
-		user.setPassword("$2a$10$/S67lvzooRc3UzAFECEg1.7lBZMQdJVTyMiRVgtpDVl3KtgaDZrkK");
-		user.setRoles(roles);
+		user1.setEmail("elattarz@yahoo.com");
+		user1.setUsername("zakimaro");
+		user1.setPassword("$2a$10$/S67lvzooRc3UzAFECEg1.7lBZMQdJVTyMiRVgtpDVl3KtgaDZrkK");
+		user1.setRoles(roles1);
 
-		userRepository.save(user);
+		userRepository.save(user1);
+
+		user2.setEmail("atlas@yahoo.com");
+		user2.setUsername("atlas");
+		user2.setPassword("$2a$10$/S67lvzooRc3UzAFECEg1.7lBZMQdJVTyMiRVgtpDVl3KtgaDZrkK");
+		user2.setRoles(roles2);
+
+		userRepository.save(user2);
 
 
 
