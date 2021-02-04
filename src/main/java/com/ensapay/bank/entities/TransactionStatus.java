@@ -1,7 +1,6 @@
 package com.ensapay.bank.entities;
 
 
-import com.ensapay.bank.Security.models.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,21 +14,14 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-
-public class Client  {
+public class TransactionStatus {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
-    private String first_name;
-    private String last_name;
-    private String cin;
-    private String phone;
-    private String email;
+    private String name;
 
     @OneToMany
-    private List<Account> account;
-
+    private List<Transaction> transaction;
 
 }

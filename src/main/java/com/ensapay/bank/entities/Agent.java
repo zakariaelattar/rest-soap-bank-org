@@ -25,10 +25,10 @@ public class Agent extends User {
     private String last_name;
     private String cin;
     private Date birth_date;
-    private String adress;
+    private String phone;
 
-    private String commercial_register_number;
-    private String patent_number;
+  /*  private String commercial_register_number;
+    private String patent_number;*/
 
 
 

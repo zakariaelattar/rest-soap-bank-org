@@ -47,6 +47,15 @@ public class AccountApi {
 
 
     }
+    @RequestMapping(value = "activate",method = RequestMethod.GET)
+    public boolean activateAccount(@RequestParam(value = "account_number") String account_number)  {
+
+        return accountService.activateAccount(account_number);
+
+    }
+
+
+
 
 
 

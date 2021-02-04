@@ -8,19 +8,21 @@ import com.ensapay.bank.Security.payload.request.LoginRequest;
 import com.ensapay.bank.Security.payload.request.SignupRequest;
 import com.ensapay.bank.Security.repository.RoleRepository;
 import com.ensapay.bank.Security.repository.UserRepository;
-import com.ensapay.bank.entities.Client;
-import com.ensapay.bank.entities.Product;
-import com.ensapay.bank.repositories.ClientRepository;
-import com.ensapay.bank.repositories.ProductRepository;
+import com.ensapay.bank.entities.*;
+import com.ensapay.bank.repositories.*;
+import com.ensapay.bank.services.account.AccountService;
+import com.ensapay.bank.services.payment.PaymentService;
 import com.ensapay.bank.soapApi.CheckBalanceClient;
 import com.ensapay.bank.soapApi.CreateAccountClient;
 import com.ensapay.bank.soapApi.CreditorClient;
 import com.ensapay.bank.soapApi.PaymentClient;
-import org.springframework.beans.factory.annotation.Autowired;
+ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -30,7 +32,8 @@ public class BankApplication implements CommandLineRunner {
 
 	@Autowired
 	RoleRepository roleRepository ;
-
+	@Autowired
+	AccountRepository accountRepository ;
 	@Autowired
 	ProductRepository productRepository;
 	@Autowired
@@ -38,6 +41,17 @@ public class BankApplication implements CommandLineRunner {
 	@Autowired
 	UserRepository userRepository;
 
+	@Autowired
+	AccountService accountService;
+
+	@Autowired
+	PaymentService paymentService;
+
+	@Autowired
+	TransactionRepository transactionRepository;
+
+	@Autowired
+	TransactionStatusRepository transactionStatusRepository;
 	public static void main(String[] args) {
 		SpringApplication.run(BankApplication.class, args);
 	}
@@ -76,21 +90,25 @@ public class BankApplication implements CommandLineRunner {
 		client1.setCin("EE123456");
 		client1.setFirst_name("Bouzid");
 		client1.setLast_name("sara");
+		client1.setEmail("sara@gmail.com");
 		client1.setPhone("0652632355");
 
 		client2.setCin("EE125423");
 		client2.setFirst_name("Omar");
 		client2.setLast_name("Imai");
+		client2.setEmail("imai@gmail.com");
 		client2.setPhone("0652214774");
 
 		client3.setCin("EE123456");
 		client3.setFirst_name("Khaoula");
 		client3.setLast_name("khaled");
+		client3.setEmail("kha@gmail.com");
 		client3.setPhone("0652369855");
 
 		client4.setCin("EE123456");
 		client4.setFirst_name("Atlas");
 		client4.setLast_name("abdelghafour");
+		client4.setEmail("at@gmail.com");
 		client4.setPhone("0625413820");
 		/****************************************/
 		productRepository.save(product1);
@@ -127,6 +145,37 @@ public class BankApplication implements CommandLineRunner {
 		user2.setRoles(roles2);
 
 		userRepository.save(user2);
+		//-----------------------------------------------------
+		Account account = new Account();
+		account.setAccountNumber("123456789");
+		account.setProduct(product1);
+		account.setClient(client1);
+		accountRepository.save(account);
+
+		//------------------------------------------------------
+		TransactionStatus transactionStatus1 = new TransactionStatus();
+		TransactionStatus transactionStatus2 = new TransactionStatus();
+		TransactionStatus transactionStatus3 = new TransactionStatus();
+
+
+		transactionStatus1.setName("pending");
+		transactionStatus2.setName("canceled");
+		transactionStatus3.setName("succeeded");
+
+		transactionStatusRepository.save(transactionStatus1);
+		transactionStatusRepository.save(transactionStatus2);
+		transactionStatusRepository.save(transactionStatus3);
+
+		Transaction transaction = new Transaction();
+		transaction.setStatus(transactionStatus1);
+		transaction.setAccount(account);
+		transaction.setConfirmationCode("9854");
+		transaction.setAmount(20);
+		transaction.setTransactionCode("123456789_2021.02.04.12.25.47");
+		transactionRepository.save(transaction);
+
+		//accountService.sendConfimationMail("h@gmail.com","123456789");
+	//paymentService.sendVerificationCode("h@gmail.com","1253");
 
 
 

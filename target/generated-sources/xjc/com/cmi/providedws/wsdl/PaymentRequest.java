@@ -48,7 +48,7 @@ public class PaymentRequest {
     @XmlElement(namespace = "http://www.cmi.com/xml/payment")
     protected double amount;
     @XmlElement(name = "account_number", namespace = "http://www.cmi.com/xml/payment")
-    protected long accountNumber;
+    protected String accountNumber;
     @XmlElement(name = "creditor_id", namespace = "http://www.cmi.com/xml/payment")
     protected long creditorId;
 
@@ -72,7 +72,7 @@ public class PaymentRequest {
      * Obtient la valeur de la propriété accountNumber.
      * 
      */
-    public long getAccountNumber() {
+    public String getAccountNumber() {
         return accountNumber;
     }
 
@@ -80,7 +80,7 @@ public class PaymentRequest {
      * Définit la valeur de la propriété accountNumber.
      * 
      */
-    public void setAccountNumber(long value) {
+    public void setAccountNumber(String value) {
         this.accountNumber = value;
     }
 

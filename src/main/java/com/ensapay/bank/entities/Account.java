@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -18,9 +19,15 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    private boolean active=false;
+
     private String accountNumber;
     @ManyToOne
     private Product product;
+
+    @ManyToOne
+    private Client client;
+
 
 
 }

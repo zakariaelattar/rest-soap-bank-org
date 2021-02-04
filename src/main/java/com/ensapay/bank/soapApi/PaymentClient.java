@@ -11,7 +11,9 @@ public class PaymentClient extends WebServiceGatewaySupport {
 
     private static final Logger log = LoggerFactory.getLogger(PaymentClient.class);
 
-    public PaymentResponse pay(long account_number,long creditor_id,double amount) {
+    public PaymentResponse pay(String account_number,long creditor_id,double amount) {
+
+
 
         PaymentRequest paymentRequest = new PaymentRequest();
 
